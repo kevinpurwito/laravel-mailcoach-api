@@ -17,11 +17,30 @@ class MailcoachApi
         $this->token = $token;
     }
 
-    public function getSubscribers(int $listId, array $filter)
+    public function getSubscribers(int $listId, array $filter = []): object|array
     {
-        $url = $this->url . '/api/email-lists/' . $listId . '/subscribers';
+        $url = $this->url . '/api/email-lists/' . $listId . '/subscribers?1=1';
+
+        if (isset($filter['email'])) {
+            $url .= '&filter[email]=' . $filter['email'];
+        }
+        if (isset($filter['status'])) {
+            $url .= '&filter[status]=' . $filter['status'];
+        }
+        if (isset($filter['search'])) {
+            $url .= '&filter[search]=' . $filter['search'];
+        }
 
         return Http::acceptJson()->contentType('application/json')->withToken($this->token)->get($url)->object();
+    }
+
+    public function findSubscriber(int $listId, string $email): SubscriberData
+    {
+        $filter = ['email' => $email];
+
+        $data = collect($this->getSubscribers($listId, $filter)->data)->first();
+
+        return SubscriberData::from($data);
     }
 
     public function getSubscriber(int $id): SubscriberData|string

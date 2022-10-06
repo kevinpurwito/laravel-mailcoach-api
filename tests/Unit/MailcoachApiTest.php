@@ -50,6 +50,16 @@ class MailcoachApiTest extends TestCase
     }
 
     /** @test */
+    public function it_finds_subscriber_by_email()
+    {
+        $id = $this->subscriberId;
+
+        $subscriber = (new MailcoachApi($this->url, $this->token))->findSubscriber($this->listId, $this->email);
+
+        $this->assertEquals($id, $subscriber->id);
+    }
+
+    /** @test */
     public function it_can_update_a_subscriber()
     {
         $id = $this->subscriberId;
