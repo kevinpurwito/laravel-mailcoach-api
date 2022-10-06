@@ -42,6 +42,8 @@ jobs:
       - name: Setup test .env
         run: |
           cp .env.example .env
+          sed -i 's|=xxx|=${{ secrets.KP_MAILCOACH_API_URL }}|g' .env
+          sed -i 's|=yyy|=${{ secrets.KP_MAILCOACH_API_TOKEN }}|g' .env
           sed -i 's|=aaa|=${{ secrets.KP_MAILCOACH_TEST_LIST_ID }}|g' .env
           sed -i 's|=bbb|=${{ secrets.KP_MAILCOACH_TEST_SUBSCRIBER_ID }}|g' .env
           sed -i 's|=ccc|=${{ secrets.KP_MAILCOACH_TEST_EMAIL }}|g' .env
