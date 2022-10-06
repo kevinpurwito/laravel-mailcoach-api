@@ -30,8 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Kevinpurwito\\LaravelMailcoachApi\\": "src",
-            "Kevinpurwito\\LaravelMailcoachApi\\Database\\Seeders\\": "database/seeders"
+            "Kevinpurwito\\LaravelMailcoachApi\\": "src"
         }
     },
     "autoload-dev": {
@@ -60,10 +59,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MailcoachApiServiceProvider"
+                "Kevinpurwito\\LaravelMailcoachApi\\MailcoachApiServiceProvider"
             ],
             "aliases": {
-                "MailcoachApi": "MailcoachApi"
+                "MailcoachApi": "Kevinpurwito\\LaravelMailcoachApi\\Facades\\MailcoachApi"
             }
         }
     }
