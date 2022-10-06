@@ -78,14 +78,14 @@ MailcoachApi::getSubscribers();
 
 ```php
 use Kevinpurwito\LaravelMailcoachApi\MailcoachApi;
+use Kevinpurwito\LaravelMailcoachApi\Data\InputSubscriberData;
 
-$mcApi = (new MailcoachApi());
+$mcApi = (new MailcoachApi(url: '', token: ''));
 
+$data = new InputSubscriberData(email: '', first_name: '', last_name: '');
+
+$subscriber = $mcApi->addSubscriber(listId: 0, data: $data);
 ```
-
-> Be careful! You can only do 3 inquiries per day for 1 customerId for each item.
-> For example. you can only inquire about a PLN charge for 1 customerId 3 times, after that you have to pay it or
-> inquire again tomorrow.
 
 ### Testing
 
