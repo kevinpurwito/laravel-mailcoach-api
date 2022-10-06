@@ -15,7 +15,6 @@ class InputSubscriberData extends Data
         public bool        $skip_confirmation = true, // for insert only
         public bool        $skip_welcome_mail = true, // for insert only
         public bool        $append_tags = true // for update only
-    )
-    {
+    ) {
     }
 }
