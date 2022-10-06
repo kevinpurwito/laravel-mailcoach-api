@@ -19,8 +19,7 @@ class SubscriberData extends Data
         public string|null  $last_name = null,
         public array|object $extra_attributes = [],
         public array        $tags = [],
-    )
-    {
+    ) {
         $this->extra_attributes = (array)$extra_attributes;
     }
 }
