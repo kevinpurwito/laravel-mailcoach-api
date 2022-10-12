@@ -34,11 +34,15 @@ class MailcoachApi
         return Http::acceptJson()->contentType('application/json')->withToken($this->token)->get($url)->object();
     }
 
-    public function findSubscriber(int $listId, string $email): SubscriberData
+    public function findSubscriber(int $listId, string $email): SubscriberData|null
     {
         $filter = ['email' => $email];
 
         $data = collect($this->getSubscribers($listId, $filter)->data)->first();
+
+        if (! $data) {
+            return null;
+        }
 
         return SubscriberData::from($data);
     }
